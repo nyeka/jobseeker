@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Splashscreen from "./pages/Splashscreen";
 import Login from "./pages/Login";
 import Sign from "./pages/Sign";
+import Welcome from "./components/welcome/Welcome";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/" element={loading ? <Splashscreen /> : <Login />} />
           <Route path="/signup" element={<Sign />} />
           <Route path="*" element={<h1>404</h1>} />
+          <Route path="/welcome" element={<Welcome />} />
         </Routes>
       </Router>
     </Container>

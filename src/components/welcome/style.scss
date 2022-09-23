@@ -1,0 +1,54 @@
+@import "../../index.scss";
+
+section#welcome {
+  font-family: $fontprimary;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+
+  .content {
+    color: $semifontcolor;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    h3 {
+      font-weight: 500;
+      font-size: 39px;
+    }
+
+    p {
+      font-weight: 300;
+      font-size: 16px;
+    }
+  }
+
+  .button {
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $secondcolor;
+    padding: 12px;
+    border-radius: 14px;
+    color: $textcolor;
+    width: 180px;
+  }
+}
+
+nav {
+  background-color: $secondcolor;
+  height: 50vh;
+  border-bottom-left-radius: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h3 {
+    font-family: $fontprimary;
+    font-weight: 500;
+    font-size: 39px;
+    color: $textcolor;
+    padding: 24px;
+  }
+}

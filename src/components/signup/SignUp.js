@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./style.scss";
-import { FiArrowRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { IoPeopleOutline } from "react-icons/io5";
 import devide from "../../assets/devider.svg";
@@ -109,7 +108,9 @@ const Signup = () => {
       <div className="content-bottom">
         <p>By signing up you agree with our Terms of Use</p>
         <button className="login">
-          <p>Sign in</p>
+          <Link to="/welcome">
+            <p>Sign in</p>
+          </Link>
         </button>
         <p className="align">
           <span>Already a member?</span>{" "}
