@@ -15,7 +15,7 @@ const App = () => {
 
   return (
     <Container className="min-h-screen max-w-md mx-auto relative ">
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route path="/" element={loading ? <Splashscreen /> : <Login />} />
         </Routes>
