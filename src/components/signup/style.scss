@@ -1,0 +1,117 @@
+@import "../../index.scss";
+
+section#sign {
+  flex-direction: column;
+  font-family: $fontprimary;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 45px;
+    gap: 12px;
+    h1 {
+      font-size: 24px;
+      color: $textcolor;
+      font-weight: 600;
+    }
+
+    p {
+      color: #aaaaaa;
+      font-weight: 400;
+      font-size: 14px;
+    }
+  }
+
+  .login {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    background-color: $secondcolor;
+    padding: 12px;
+    border-radius: 14px;
+    color: $textcolor;
+    width: 80%;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    input {
+      background: $secondcolor;
+      padding: 12px;
+      color: $textcolor;
+      width: 100%;
+      padding-left: 4rem;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+
+    .form-input {
+      position: relative;
+
+      .icon {
+        position: absolute;
+        top: 30%;
+        left: 14px;
+        color: $textcolor;
+      }
+
+      .mass {
+        left: 10px;
+      }
+
+      .icon-eye {
+        position: absolute;
+        top: 30%;
+        right: 15px;
+        color: $textcolor;
+      }
+
+      .icon-devider {
+        position: absolute;
+        top: 10%;
+        left: 3rem;
+      }
+    }
+  }
+
+  .content-bottom {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    p {
+      color: $textcolor;
+    }
+
+    .icons-next {
+      align-self: center;
+      background-color: #ff9792;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+    }
+
+    .align {
+      span {
+        color: #aaa;
+      }
+
+      strong {
+        color: red;
+      }
+    }
+  }
+}

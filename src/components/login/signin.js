@@ -5,6 +5,7 @@ import "./style.scss";
 import { HiOutlineMail } from "react-icons/hi";
 import { BiLockAlt } from "react-icons/bi";
 import logo from "../../assets/logojs.png";
+import { Link } from "react-router-dom";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -69,7 +70,10 @@ const Signin = () => {
               <u>Forgot password?</u>
             </p>
             <p>
-              New Member? <span>Sign up</span>
+              New Member?{" "}
+              <Link to="/signup">
+                <span>Sign up</span>
+              </Link>
             </p>
           </div>
         </div>
