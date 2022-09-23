@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Splashscreen from "./pages/Splashscreen";
+import Login from "./pages/Login";
 
-function App() {
+const App = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container className="min-h-screen max-w-md mx-auto relative ">
+      <Router>
+        <Routes>
+          <Route path="/" element={loading ? <Splashscreen /> : <Login />} />
+        </Routes>
+      </Router>
+    </Container>
   );
-}
+};
 
 export default App;
+
+const Container = styled.div`
+  background-color: #181d2d;
+`;

@@ -1,0 +1,126 @@
+@import "../../index.scss";
+
+section#signin {
+  font-family: $fontprimary;
+  padding: 24px;
+
+  .text-content {
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    margin-bottom: 44px;
+    gap: 12px;
+    h1 {
+      font-size: 24px;
+      color: $textcolor;
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    img {
+      width: 50%;
+      height: 50%;
+    }
+  }
+  label {
+    color: $textcolor;
+  }
+
+  .main-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 24px;
+    color: $textcolor;
+    gap: 12px;
+
+    .bottom-text {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      p {
+        text-align: center;
+      }
+      span {
+        color: red;
+      }
+    }
+  }
+
+  .cek {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 24px;
+    margin-left: 12px;
+    #checkbox1 {
+      cursor: pointer;
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  .login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $secondcolor;
+    padding: 12px;
+    border-radius: 14px;
+    color: $textcolor;
+    width: 80%;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    input {
+      background: $secondcolor;
+      color: $textcolor;
+      padding: 12px;
+      width: 100%;
+      padding-left: 4rem;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+
+    .form-input {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .icon {
+        position: absolute;
+        top: 55%;
+        left: 14px;
+        color: $textcolor;
+      }
+
+      .mass {
+        left: 10px;
+      }
+
+      .icon-eye {
+        position: absolute;
+        top: 55%;
+        right: 15px;
+        color: $textcolor;
+      }
+
+      .icon-devider {
+        position: absolute;
+        top: 50%;
+        left: 3rem;
+      }
+    }
+  }
+}
