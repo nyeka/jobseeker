@@ -23,30 +23,20 @@ const Signup = () => {
   const [loading, setloading] = useState(false);
   const navigate = useNavigate();
 
-  const register = () => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(async (res) => {
-        const data = await setDoc(doc(db, "users", res.user.uid), {
-          name: name,
-          email: email,
-          mobile: mobile,
-          password: password,
-        });
-        console.log(data);
-        navigate("/home");
-      })
-      .catch((error) => {
-        console.log(error);
-        if (error.code === "auth/email-already-in-use") {
-          console.log("closed");
-        }
+  const regis = async () => {
+    try {
+      setloading(true);
+      await createUserWithEmailAndPassword(auth, email, password);
+      await setDoc(doc(db, "users", auth.currentUser.uid), {
+        name: name,
+        email: email,
+        mobile: mobile,
+        password: password,
       });
-
-    if (password !== confirmPassword) {
-      alert("password not matched");
-      return true;
+      navigate("/home");
+    } catch (error) {
+      console.log(error);
     }
-    return false;
   };
 
   const showpassword = () => {
@@ -145,7 +135,7 @@ const Signup = () => {
             <p>By signing up you agree with our Terms of Use</p>
             <button
               className="login"
-              onClick={register}
+              onClick={regis}
               disabled={password === confirmPassword ? false : true}
             >
               <p>Sign in</p>
