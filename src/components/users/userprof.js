@@ -25,6 +25,7 @@ const Prof = () => {
         name: auth.currentUser.displayName,
         mobile: mobile,
         email: auth.currentUser.email,
+        userprofile: auth.currentUser.photoURL,
       });
       navigate("/home");
     } catch (error) {

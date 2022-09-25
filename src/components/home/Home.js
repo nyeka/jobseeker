@@ -22,14 +22,18 @@ const Home = () => {
       } catch (error) {
         console.log(error);
       }
-
       setloading(false);
-
-      console.log(data.name);
     };
 
     getdata();
   }, [data.name]);
+
+  const getprofile = () => {
+    if (data.userprofile) {
+      return <img src={data.userprofile} alt="user profile" />;
+    }
+    return <IoPersonOutline size="29px" />;
+  };
 
   return (
     <>
@@ -44,13 +48,13 @@ const Home = () => {
             alignItems: "center",
           }}
         >
-         fetching data
+          fetching data
         </div>
       ) : (
         <section id="home">
           <nav>
             <RiMenu2Line size="29px" />
-            <IoPersonOutline size="29px" />
+            {getprofile()}
           </nav>
           <div className="text-header">
             <p>

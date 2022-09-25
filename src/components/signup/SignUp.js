@@ -64,7 +64,7 @@ const Signup = () => {
               <img src={devide} alt="devider" className="icon-devider" />
               <input
                 type="text"
-                placeholder=" create an account here"
+                placeholder="Username"
                 value={name}
                 onChange={(e) => setname(e.target.value)}
                 required={true}
