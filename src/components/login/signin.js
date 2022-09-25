@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase_config";
 import { useNavigate } from "react-router-dom";
+import { signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -29,6 +31,41 @@ const Signin = () => {
       navigate("/home");
     } catch (error) {
       console.log(error);
+      if (error.code === "auth/wrong-password") {
+        console.log("wrong password");
+      }
+    }
+
+    setloading(false);
+  };
+
+  const googleLogin = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      setloading(true);
+      await signInWithPopup(auth, provider);
+      navigate("/profile");
+    } catch (error) {
+      console.log(error);
+      if (error.code === "auth/popup-closed-by-user") {
+        console.log("closed");
+      }
+    }
+
+    setloading(false);
+  };
+
+  const githublogin = async () => {
+    const provider = new GithubAuthProvider();
+    try {
+      setloading(true);
+      await signInWithPopup(auth, provider);
+      navigate("/profile");
+    } catch (error) {
+      console.log(error);
+      if (error.code === "auth/popup-closed-by-user") {
+        console.log("ganteng");
+      }
     }
 
     setloading(false);
@@ -88,14 +125,22 @@ const Signin = () => {
             </button>
             <div className="bottom-text">
               <p>
-                <u>Forgot password?</u>
-              </p>
-              <p>
                 New Member?{" "}
                 <Link to="/signup">
                   <span>Sign up</span>
                 </Link>
               </p>
+              <div className="google-login">
+                <h3>Or continue with</h3>
+                <div className="google-button">
+                  <button className="login" onClick={googleLogin}>
+                    Google
+                  </button>
+                  <button className="login" onClick={githublogin}>
+                    Github
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </section>

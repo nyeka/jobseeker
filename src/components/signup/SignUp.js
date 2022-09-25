@@ -30,11 +30,23 @@ const Signup = () => {
           name: name,
           email: email,
           mobile: mobile,
+          password: password,
         });
         console.log(data);
         navigate("/home");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        if (error.code === "auth/email-already-in-use") {
+          console.log("closed");
+        }
+      });
+
+    if (password !== confirmPassword) {
+      alert("password not matched");
+      return true;
+    }
+    return false;
   };
 
   const showpassword = () => {
@@ -132,7 +144,11 @@ const Signup = () => {
           </div>
           <div className="content-bottom">
             <p>By signing up you agree with our Terms of Use</p>
-            <button className="login" onClick={register}>
+            <button
+              className="login"
+              onClick={register}
+              disabled={password === confirmPassword ? false : true}
+            >
               <p>Sign in</p>
             </button>
             <p className="align">

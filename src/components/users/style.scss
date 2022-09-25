@@ -1,73 +1,34 @@
 @import "../../index.scss";
 
-section#signin {
+section#sign {
+  flex-direction: column;
   font-family: $fontprimary;
   padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 
   .text-content {
-    align-self: flex-end;
     display: flex;
     flex-direction: column;
-    margin-top: 24px;
-    margin-bottom: 44px;
+    padding-top: 45px;
     gap: 12px;
     h1 {
       font-size: 24px;
       color: $textcolor;
       font-weight: 600;
-      text-align: center;
     }
-  }
 
-  .logo {
-    display: flex;
-    justify-content: center;
-    img {
-      width: 50%;
-      height: 50%;
-    }
-  }
-  label {
-    color: $textcolor;
-  }
-
-  .main-login {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 24px;
-    color: $textcolor;
-    gap: 12px;
-
-    .bottom-text {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-
-      p {
-        text-align: center;
-      }
-      span {
-        color: red;
-      }
-    }
-  }
-
-  .cek {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    margin-top: 24px;
-    margin-left: 12px;
-    #checkbox1 {
-      cursor: pointer;
-      width: 15px;
-      height: 15px;
+    p {
+      color: #aaaaaa;
+      font-weight: 400;
+      font-size: 14px;
     }
   }
 
   .login {
     display: flex;
+    align-self: center;
     justify-content: center;
     align-items: center;
     background-color: $secondcolor;
@@ -77,15 +38,15 @@ section#signin {
     width: 80%;
   }
 
-  form {
+  .form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
 
     input {
       background: $secondcolor;
-      color: $textcolor;
       padding: 12px;
+      color: $textcolor;
       width: 100%;
       padding-left: 4rem;
       border-top-left-radius: 5px;
@@ -94,13 +55,10 @@ section#signin {
 
     .form-input {
       position: relative;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
 
       .icon {
         position: absolute;
-        top: 55%;
+        top: 30%;
         left: 14px;
         color: $textcolor;
       }
@@ -111,27 +69,49 @@ section#signin {
 
       .icon-eye {
         position: absolute;
-        top: 55%;
+        top: 30%;
         right: 15px;
         color: $textcolor;
       }
 
       .icon-devider {
         position: absolute;
-        top: 50%;
+        top: 10%;
         left: 3rem;
       }
     }
   }
 
-  .google-login {
+  .content-bottom {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    align-items: center;
-    .google-button {
+    gap: 20px;
+
+    p {
+      color: $textcolor;
+    }
+
+    .icons-next {
+      align-self: center;
+      background-color: #ff9792;
       display: flex;
-      gap: 34px;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+    }
+
+    .align {
+      span {
+        color: #aaa;
+      }
+
+      strong {
+        color: red;
+      }
     }
   }
 }

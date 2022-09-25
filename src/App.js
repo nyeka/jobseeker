@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Sign from "./pages/Sign";
 import Welcome from "./components/welcome/Welcome";
 import Dashboard from "./pages/Dashboard";
+import Prof from "./components/users/userprof";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="*" element={<h1>404</h1>} />
           <Route path="/home" element={<Dashboard />} />
           <Route path="/welcome" element={<Welcome />} />
+          <Route path="/profile" element={<Prof />} />
         </Routes>
       </Router>
     </Container>
