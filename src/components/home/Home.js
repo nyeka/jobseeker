@@ -7,6 +7,7 @@ import { GiSandsOfTime } from "react-icons/gi";
 import { auth, db } from "../../firebase_config";
 import { getDoc, doc } from "firebase/firestore";
 import Bottomnav from "../bottomnav/bottomnav";
+import Loading from "../pulse/loading";
 
 const Home = () => {
   const [name, setname] = useState("");
@@ -40,17 +41,7 @@ const Home = () => {
     <>
       {" "}
       {loading ? (
-        <div
-          style={{
-            color: "white",
-            fontSize: "34px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          fetching data
-        </div>
+        <Loading />
       ) : (
         <section id="home">
           <nav>
