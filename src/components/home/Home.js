@@ -9,7 +9,6 @@ import { getDoc, collection, doc } from "firebase/firestore";
 
 const Home = () => {
   const [name, setname] = useState("");
-  const [username, setusername] = useState();
   const [data, setdata] = useState([]);
   const [loading, setloading] = useState(false);
 
@@ -45,7 +44,7 @@ const Home = () => {
             alignItems: "center",
           }}
         >
-          Loading.. fetching data
+         fetching data
         </div>
       ) : (
         <section id="home">

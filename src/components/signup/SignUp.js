@@ -68,7 +68,6 @@ const Signup = () => {
             <h1>Sign Up</h1>
             <p>Create an account here</p>
           </div>
-
           <div className="form">
             <div className="form-input">
               <IoPeopleOutline className="icon" size="23px" />
