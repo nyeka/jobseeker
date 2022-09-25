@@ -7,6 +7,7 @@ import Sign from "./pages/Sign";
 import Welcome from "./components/welcome/Welcome";
 import Dashboard from "./pages/Dashboard";
 import Prof from "./components/users/userprof";
+import ChangePages from "./pages/changepages";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -25,7 +26,7 @@ const App = () => {
           <Route path="/" element={loading ? <Splashscreen /> : <Login />} />
           <Route path="/signup" element={<Sign />} />
           <Route path="*" element={<h1>404</h1>} />
-          <Route path="/home" element={<Dashboard />} />
+          <Route path="/home" element={<ChangePages />} />
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/profile" element={<Prof />} />
         </Routes>

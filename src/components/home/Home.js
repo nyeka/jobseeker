@@ -5,7 +5,8 @@ import { IoPersonOutline } from "react-icons/io5";
 import { AiOutlineSearch, AiTwotoneFileAdd } from "react-icons/ai";
 import { GiSandsOfTime } from "react-icons/gi";
 import { auth, db } from "../../firebase_config";
-import { getDoc, collection, doc } from "firebase/firestore";
+import { getDoc, doc } from "firebase/firestore";
+import Bottomnav from "../bottomnav/bottomnav";
 
 const Home = () => {
   const [name, setname] = useState("");
