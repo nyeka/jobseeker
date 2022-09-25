@@ -6,78 +6,100 @@ import { HiOutlineMail } from "react-icons/hi";
 import { BiLockAlt } from "react-icons/bi";
 import logo from "../../assets/logojs.png";
 import { Link } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase_config";
+import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isShow, setIsShow] = useState(false);
+  const [loading, setloading] = useState(false);
+  const navigate = useNavigate();
 
   const handleShowPassword = (e) => {
     e.preventDefault();
     setIsShow(!isShow);
   };
 
+  const login = async () => {
+    try {
+      setloading(true);
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("/home");
+    } catch (error) {
+      console.log(error);
+    }
+
+    setloading(false);
+  };
+
   return (
     <>
-      <section id="signin">
-        <div className="logo">
-          <img src={logo} alt="logo" />
-        </div>
-        <div className="text-content">
-          <h1>Sign In</h1>
-        </div>
-        <form>
-          <div className="form-input">
-            <label htmlFor="email">Email</label>
-            <HiOutlineMail className="icon mass" size="25px" />
-            <img src={devide} alt="devider" className="icon-devider" />
-            <input
-              type="email"
-              placeholder="Email Address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+      {" "}
+      {loading ? (
+        <div style={{ color: "white" }}>Loading </div>
+      ) : (
+        <section id="signin">
+          <div className="logo">
+            <img src={logo} alt="logo" />
           </div>
-          <div className="form-input">
-            <label htmlFor="password">Password</label>
-            <BiLockAlt className="icon mass" size="25px" />
-            <img src={devide} alt="devider" className="icon-devider" />
-            <input
-              type={isShow ? "text" : "password"}
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button className="icon-eye" onClick={handleShowPassword}>
-              {isShow ? (
-                <AiOutlineEyeInvisible size={"26px"} />
-              ) : (
-                <AiOutlineEye size={"26px"} />
-              )}
+          <div className="text-content">
+            <h1>Sign In</h1>
+          </div>
+          <form>
+            <div className="form-input">
+              <label htmlFor="email">Email</label>
+              <HiOutlineMail className="icon mass" size="25px" />
+              <img src={devide} alt="devider" className="icon-devider" />
+              <input
+                type="email"
+                placeholder="Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="form-input">
+              <label htmlFor="password">Password</label>
+              <BiLockAlt className="icon mass" size="25px" />
+              <img src={devide} alt="devider" className="icon-devider" />
+              <input
+                type={isShow ? "text" : "password"}
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button className="icon-eye" onClick={handleShowPassword}>
+                {isShow ? (
+                  <AiOutlineEyeInvisible size={"26px"} />
+                ) : (
+                  <AiOutlineEye size={"26px"} />
+                )}
+              </button>
+            </div>
+          </form>
+          <div className="cek">
+            <input type="checkbox" name="remember" id="checkbox1" />
+            <label htmlFor="remember">Remember me</label>
+          </div>
+          <div className="main-login">
+            <button className="login" onClick={login}>
+              <p>Sign in</p>
             </button>
+            <div className="bottom-text">
+              <p>
+                <u>Forgot password?</u>
+              </p>
+              <p>
+                New Member?{" "}
+                <Link to="/signup">
+                  <span>Sign up</span>
+                </Link>
+              </p>
+            </div>
           </div>
-        </form>
-        <div className="cek">
-          <input type="checkbox" name="remember" id="checkbox1" />
-          <label htmlFor="remember">Remember me</label>
-        </div>
-        <div className="main-login">
-          <button className="login">
-            <p>Sign in</p>
-          </button>
-          <div className="bottom-text">
-            <p>
-              <u>Forgot password?</u>
-            </p>
-            <p>
-              New Member?{" "}
-              <Link to="/signup">
-                <span>Sign up</span>
-              </Link>
-            </p>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
     </>
   );
 };

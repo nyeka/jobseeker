@@ -4,7 +4,7 @@ import "./style.scss";
 const Welcome = () => {
   return (
     <>
-      <nav>
+      <nav className="nav">
         <h3>Some vector here</h3>
       </nav>
       <section id="welcome">
