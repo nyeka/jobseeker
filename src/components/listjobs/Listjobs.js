@@ -1,23 +1,14 @@
-import {
-  collection,
-  deleteDoc,
-  doc,
-  getDoc,
-  getDocs,
-} from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import React, { useState, useEffect } from "react";
-import { auth, db } from "../../firebase_config";
+import { db } from "../../firebase_config";
 import "./style.scss";
 import { AiOutlineSearch } from "react-icons/ai";
 import Nav from "../nav/nav";
-import { async } from "@firebase/util";
 import { useNavigate } from "react-router-dom";
-import Bottomnav from "../bottomnav/bottomnav";
 
 const Listjobs = () => {
   const [jobdata, setjobdata] = useState([]);
   const [loadme, setloadme] = useState(false);
-  const [datasend, setdatasend] = useState([]);
   const [search, setsearch] = useState("");
   const navigate = useNavigate();
 
@@ -33,22 +24,10 @@ const Listjobs = () => {
       setloadme(false);
     };
     getdata();
-  }, [jobdata.namejob]);
+  }, [jobdata.id]);
 
   const removedata = async (id) => {
     navigate("/details", { state: { id: id } });
-  };
-
-  const send = async (id) => {
-    try {
-      const snapda = await getDocs(
-        collection(db, "jobs", "maPcvw88KQduW0ESmpkGkVjtVDv2")
-      );
-      setdatasend(snapda.data);
-    } catch (error) {
-      console.log(error);
-    }
-    console.log(datasend);
   };
 
   return (
@@ -70,7 +49,6 @@ const Listjobs = () => {
                 />
               </div>
             </div>
-
             <div className="content">
               {jobdata.map((job) => {
                 return (

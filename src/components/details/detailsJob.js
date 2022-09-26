@@ -4,6 +4,8 @@ import { useLocation } from "react-router-dom";
 import { db } from "../../firebase_config";
 import Desknav from "../nav/desknav";
 import "./style.scss";
+import { FaWallet } from "react-icons/fa";
+import { BsPeople } from "react-icons/bs";
 
 const DetailsJob = () => {
   const location = useLocation();
@@ -22,7 +24,6 @@ const DetailsJob = () => {
 
       setloading(false);
     };
-
     getdada();
   }, [location.state.id]);
 
@@ -42,7 +43,39 @@ const DetailsJob = () => {
     <>
       <Desknav to={-1} />
       <section id="details">
-        <h1>{colect.namejob}</h1>
+        <div className="content-text">
+          <h2>
+            {colect.namejob} {","} {colect.companyname} {`(${colect.jobtype})`}{" "}
+            {"-"} {colect.jobsalary}
+          </h2>
+          <div className="container">
+            <div className="text-child">
+              <FaWallet />
+              <p>{colect.jobtype} - entry level</p>
+            </div>
+            <div className="text-child">
+              <BsPeople />
+              <p>3,000 - 10,000 employes - {colect.namejob}</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3>Job Description</h3>
+          <p>{colect.description}</p>
+        </div>
+        {colect.jobrequirement && (
+          <div>
+            <h3>Job Requirements</h3>
+            <p>{colect.jobrequirement}</p>
+          </div>
+        )}
+        {colect.jobqualification && (
+          <div>
+            <h3>Job Qualification</h3>
+            <p>{colect.jobqualification}</p>
+          </div>
+        )}
       </section>
     </>
   );

@@ -13,6 +13,7 @@ const Postjobs = () => {
   const [jobrequirement, setjobrequirement] = useState("");
   const [qualification, setqualification] = useState("");
   const [salary, setsalary] = useState("");
+  const [companyname, setcompanyname] = useState("");
 
   const senddata = async () => {
     try {
@@ -30,6 +31,7 @@ const Postjobs = () => {
         jobqualification: qualification,
         jobrequirement: jobrequirement,
         id: auth.currentUser.uid,
+        companyname: companyname,
       });
     } catch (error) {
       console.log(error);
@@ -61,6 +63,15 @@ const Postjobs = () => {
             placeholder="Name"
             value={namejob}
             onChange={(e) => setnamejob(e.target.value)}
+          />
+        </div>
+        <div className="form-input">
+          <label htmlFor="email">Company name</label>
+          <input
+            type="text"
+            placeholder="Company name"
+            value={companyname}
+            onChange={(e) => setcompanyname(e.target.value)}
           />
         </div>
         <div className="form-input">
