@@ -1,5 +1,5 @@
 import { addDoc, collection } from "firebase/firestore";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { auth, db } from "../../firebase_config";
 import "./style.scss";
 
@@ -14,6 +14,10 @@ const Postjobs = () => {
   const [qualification, setqualification] = useState("");
   const [salary, setsalary] = useState("");
   const [companyname, setcompanyname] = useState("");
+
+  useEffect(() => {
+    
+  }, []);
 
   const senddata = async () => {
     try {

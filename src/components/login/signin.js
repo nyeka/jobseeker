@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { signInWithPopup } from "firebase/auth";
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 
-const Signin = ({ load }) => {
+const Signin = ({ setisAuth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isShow, setIsShow] = useState(false);
@@ -27,8 +27,11 @@ const Signin = ({ load }) => {
   const login = async () => {
     try {
       setloading(true);
-      await signInWithEmailAndPassword(auth, email, password);
-      navigate("/home");
+      await signInWithEmailAndPassword(auth, email, password).then(() => {
+        localStorage.setItem("isAuth", true);
+        setisAuth(true);
+        navigate("/home");
+      });
     } catch (error) {
       console.log(error);
       if (error.code === "auth/wrong-password") {
@@ -42,7 +45,10 @@ const Signin = ({ load }) => {
     const provider = new GoogleAuthProvider();
     try {
       setloading(true);
-      await signInWithPopup(auth, provider);
+      await signInWithPopup(auth, provider).then(() => {
+        localStorage.setItem("isAuth", true);
+        setisAuth(true);
+      });
     } catch (error) {
       console.log(error);
       if (error.code === "auth/popup-closed-by-user") {
@@ -57,7 +63,11 @@ const Signin = ({ load }) => {
     const provider = new GithubAuthProvider();
     try {
       setloading(true);
-      await signInWithPopup(auth, provider);
+      await signInWithPopup(auth, provider).then(() => {
+        localStorage.setItem("isAuth", true);
+        setisAuth(true);
+      });
+
       navigate("/profile");
     } catch (error) {
       console.log(error);

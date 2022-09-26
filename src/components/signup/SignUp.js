@@ -23,7 +23,7 @@ const Signup = () => {
   const [loading, setloading] = useState(false);
   const navigate = useNavigate();
 
-  const regis = async () => {
+  const regis = async ({ setisAuth }) => {
     try {
       setloading(true);
       await createUserWithEmailAndPassword(auth, email, password);
@@ -37,6 +37,7 @@ const Signup = () => {
     } catch (error) {
       console.log(error);
     }
+    setloading(false);
   };
 
   const showpassword = () => {
