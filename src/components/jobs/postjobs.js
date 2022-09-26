@@ -27,6 +27,9 @@ const Postjobs = () => {
         img: auth.currentUser.photoURL,
         created: new Date(),
         jobsalary: salary,
+        jobqualification: qualification,
+        jobrequirement: jobrequirement,
+        id: auth.currentUser.uid,
       });
     } catch (error) {
       console.log(error);

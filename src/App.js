@@ -9,10 +9,11 @@ import Prof from "./components/users/userprof";
 import ChangePages from "./pages/changepages";
 import Loading from "./components/pulse/loading";
 import Buttonload from "./components/pulse/buttonload";
+import DetailsJob from "./components/details/detailsJob";
+import Listjobs from "./components/listjobs/Listjobs";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
-  const [isauth, setisauth] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -25,13 +26,15 @@ const App = () => {
       <Router basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route path="/" element={loading ? <Splashscreen /> : <Login />} />
-          <Route path="/signup" element={ <Sign load={setLoading} />} />
+          <Route path="/signup" element={<Sign load={setLoading} />} />
           <Route path="*" element={<h1>404</h1>} />
           <Route path="/home" element={<ChangePages />} />
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/loading" element={<Loading />} />
           <Route path="/profile" element={<Prof />} />
+          <Route path="/listjob" element={<Listjobs />} />
           <Route path="/load" element={<Buttonload />} />
+          <Route path="/details" element={<DetailsJob />} />
         </Routes>
       </Router>
     </Container>

@@ -8,6 +8,7 @@ import { auth, db } from "../../firebase_config";
 import { getDoc, doc } from "firebase/firestore";
 import Bottomnav from "../bottomnav/bottomnav";
 import Loading from "../pulse/loading";
+import Nav from "../nav/nav";
 
 const Home = () => {
   const [name, setname] = useState("");
@@ -30,13 +31,6 @@ const Home = () => {
     getdata();
   }, [data.name]);
 
-  const getprofile = () => {
-    if (data.userprofile) {
-      return <img src={data.userprofile} alt="user profile" />;
-    }
-    return <IoPersonOutline size="29px" />;
-  };
-
   return (
     <>
       {" "}
@@ -44,10 +38,7 @@ const Home = () => {
         <Loading />
       ) : (
         <section id="home">
-          <nav>
-            <RiMenu2Line size="29px" />
-            {getprofile()}
-          </nav>
+          <Nav />
           <div className="text-header">
             <p>
               Hi {data.name}, <br /> Find your dream job

@@ -1,0 +1,14 @@
+@import "../../index.scss";
+
+nav#nav {
+  font-family: $fontprimary;
+  padding: 24px;
+  color: $textcolor;
+  height: 70px;
+
+  .link {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+}
