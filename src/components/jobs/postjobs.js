@@ -12,6 +12,7 @@ const Postjobs = () => {
   const [oader, setloader] = useState(false);
   const [jobrequirement, setjobrequirement] = useState("");
   const [qualification, setqualification] = useState("");
+  const [salary, setsalary] = useState("");
 
   const senddata = async () => {
     try {
@@ -22,14 +23,22 @@ const Postjobs = () => {
         workplacetype: workplacetype,
         description: description,
         jobtype: jobtype,
-        id: auth.currentUser.uid,
         author: auth.currentUser.displayName,
         img: auth.currentUser.photoURL,
+        created: new Date(),
+        jobsalary: salary,
       });
     } catch (error) {
       console.log(error);
     }
     setloader(false);
+    setnamejob("");
+    setlocation("");
+    setworlplacetype("");
+    setdescription("");
+    setjobtype("");
+    setjobrequirement("");
+    setqualification("");
   };
 
   return (
@@ -58,6 +67,15 @@ const Postjobs = () => {
             placeholder="workplace type"
             value={workplacetype}
             onChange={(e) => setworlplacetype(e.target.value)}
+          />
+        </div>
+        <div className="form-input">
+          <label htmlFor="Type">Salary</label>
+          <input
+            type="text"
+            placeholder="Salary"
+            value={salary}
+            onChange={(e) => setsalary(e.target.value)}
           />
         </div>
         <div className="form-input">

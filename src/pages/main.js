@@ -9,7 +9,7 @@ const Main = ({ val }) => {
     return <Home />;
   }
   if (val === 1) {
-    return <Listjobs />;
+    return <Listjobs setval={val} />;
   }
 
   if (val === 2) {
