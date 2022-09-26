@@ -52,7 +52,12 @@ const Listjobs = () => {
             <div className="content">
               {jobdata.map((job) => {
                 return (
-                  <div key={job.id} className="container">
+                  <div
+                    key={job.id}
+                    className="container"
+                    onClick={() => removedata(job.id)}
+                    style={{ cursor: "pointer" }}
+                  >
                     <img src={job.img} alt="ini gambar" />
                     <div className="text-content">
                       <h3>
@@ -61,7 +66,6 @@ const Listjobs = () => {
                       </h3>
                       <span>{job.jobtype}</span>
                       <p>{job.location}</p>
-                      <button onClick={() => removedata(job.id)}>Delete</button>
                     </div>
                   </div>
                 );

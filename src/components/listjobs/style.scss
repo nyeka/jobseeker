@@ -7,6 +7,7 @@ section#listjob {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding-bottom: 40px;
 
   nav {
     display: flex;
@@ -56,6 +57,12 @@ section#listjob {
   .container {
     display: flex;
     gap: 24px;
+    padding: 12px;
+    border-radius: 24px;
+
+    &:hover {
+      background-color: $secondcolor;
+    }
 
     img {
       border-radius: 9px;

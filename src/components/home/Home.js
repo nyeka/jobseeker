@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./style.scss";
-import { RiMenu2Line } from "react-icons/ri";
-import { IoPersonOutline } from "react-icons/io5";
 import { AiOutlineSearch, AiTwotoneFileAdd } from "react-icons/ai";
 import { GiSandsOfTime } from "react-icons/gi";
 import { auth, db } from "../../firebase_config";
 import { getDoc, doc } from "firebase/firestore";
-import Bottomnav from "../bottomnav/bottomnav";
 import Loading from "../pulse/loading";
 import Nav from "../nav/nav";
 

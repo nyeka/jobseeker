@@ -51,7 +51,18 @@ const Signup = () => {
     <>
       {" "}
       {loading ? (
-        <div style={{ color: "white" }}>Loading</div>
+        <div
+          style={{
+            color: "white",
+            height: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "20px",
+          }}
+        >
+          Loading
+        </div>
       ) : (
         <section id="sign" style={{ paddingBottom: "2rem" }}>
           <div className="text-content">
