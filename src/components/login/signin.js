@@ -9,10 +9,10 @@ import { Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase_config";
 import { useNavigate } from "react-router-dom";
-import { signInWithPopup, signInWithRedirect } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 
-const Signin = () => {
+const Signin = ({ load }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isShow, setIsShow] = useState(false);
@@ -35,7 +35,6 @@ const Signin = () => {
         console.log("wrong password");
       }
     }
-
     setloading(false);
   };
 
@@ -50,7 +49,6 @@ const Signin = () => {
         console.log("closed");
       }
     }
-
     setloading(false);
     navigate("/profile");
   };
@@ -67,7 +65,6 @@ const Signin = () => {
         console.log("ganteng");
       }
     }
-
     setloading(false);
   };
 

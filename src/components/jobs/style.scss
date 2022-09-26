@@ -1,0 +1,58 @@
+@import "../../index.scss";
+
+section#postjob {
+  padding: 24px;
+  color: $textcolor;
+  font-family: $fontprimary;
+  padding-bottom: 120px;
+  nav {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    margin-bottom: 30px;
+
+    h3 {
+      font-size: 24px;
+      font-weight: 400;
+    }
+
+    .login {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $secondcolor;
+      padding: 12px;
+      border-radius: 14px;
+      color: $textcolor;
+      height: 35px;
+      width: fit-content;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    input {
+      background: $secondcolor;
+      color: $textcolor;
+      padding: 12px;
+      width: 100%;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+
+    textarea {
+      @extend input;
+      height: 200px;
+    }
+
+    .form-input {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+}

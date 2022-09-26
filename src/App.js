@@ -25,7 +25,7 @@ const App = () => {
       <Router basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route path="/" element={loading ? <Splashscreen /> : <Login />} />
-          <Route path="/signup" element={<Sign />} />
+          <Route path="/signup" element={ <Sign load={setLoading} />} />
           <Route path="*" element={<h1>404</h1>} />
           <Route path="/home" element={<ChangePages />} />
           <Route path="/welcome" element={<Welcome />} />

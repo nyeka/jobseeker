@@ -118,5 +118,5 @@ export default Loading;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 12px; 
 `;
