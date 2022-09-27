@@ -51,14 +51,13 @@ const Listjobs = () => {
           <div className="content">
             {jobdata
               .filter((val) => {
-                if (!val) {
-                  return val;
-                } else if (
+                if (
                   val.namejob.toLowerCase().includes(search.toLowerCase()) |
                   val.workplacetype.toLowerCase().includes(search.toLowerCase())
                 ) {
                   return val;
                 }
+                return false;
               })
               .map((job, id) => {
                 return (
