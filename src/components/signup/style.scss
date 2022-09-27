@@ -38,6 +38,18 @@ section#sign {
     width: 80%;
   }
 
+  form {
+    .error {
+      margin-bottom: 12px;
+      color: red;
+      font-size: 12px;
+    }
+  }
+
+  .main-container {
+    padding-bottom: 70px;
+  }
+
   .form {
     display: flex;
     flex-direction: column;

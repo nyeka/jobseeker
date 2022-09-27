@@ -1,7 +1,12 @@
 import React from "react";
 import "./style.scss";
+import { useNavigate } from "react-router-dom";
 
 const Welcome = () => {
+  const navigate = useNavigate();
+  const handlerbutton = () => {
+    navigate("/home");
+  };
   return (
     <>
       <nav className="nav">
@@ -14,9 +19,9 @@ const Welcome = () => {
             We provide many types of jobs from various cities around the world
           </p>
         </div>
-        <div className="button">
+        <button className="button" onClick={handlerbutton}>
           <p>Get Started</p>
-        </div>
+        </button>
       </section>
     </>
   );

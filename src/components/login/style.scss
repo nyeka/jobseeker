@@ -122,6 +122,12 @@ section#signin {
         left: 3rem;
       }
     }
+
+    .error {
+      margin-bottom: 12px;
+      color: red;
+      font-size: 12px;
+    }
   }
 
   .google-login {

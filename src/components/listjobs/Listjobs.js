@@ -31,29 +31,39 @@ const Listjobs = () => {
   };
 
   return (
-    <>
-      <section id="listjob">
-        {loadme ? (
-          <div className="loading">Loading</div>
-        ) : (
-          <div>
-            <Nav />
-            <div className="container-form">
-              <div className="form-input">
-                <AiOutlineSearch className="icon" size="21px" />
-                <input
-                  type="text"
-                  placeholder=" Search for Jobs title"
-                  value={search}
-                  onChange={(e) => setsearch(e.target.value)}
-                />
-              </div>
+    <section id="listjob">
+      {loadme ? (
+        <div className="loading">Loading</div>
+      ) : (
+        <div className="main-container">
+          <Nav />
+          <div className="container-form">
+            <div className="form-input">
+              <AiOutlineSearch className="icon" size="21px" />
+              <input
+                type="text"
+                placeholder=" Search for Jobs title"
+                value={search}
+                onChange={(e) => setsearch(e.target.value)}
+              />
             </div>
-            <div className="content">
-              {jobdata.map((job) => {
+          </div>
+          <div className="content">
+            {jobdata
+              .filter((val) => {
+                if (!val) {
+                  return val;
+                } else if (
+                  val.namejob.toLowerCase().includes(search.toLowerCase()) |
+                  val.workplacetype.toLowerCase().includes(search.toLowerCase())
+                ) {
+                  return val;
+                }
+              })
+              .map((job, id) => {
                 return (
                   <div
-                    key={job.id}
+                    key={id}
                     className="container"
                     onClick={() => removedata(job.id)}
                     style={{ cursor: "pointer" }}
@@ -70,11 +80,10 @@ const Listjobs = () => {
                   </div>
                 );
               })}
-            </div>
           </div>
-        )}
-      </section>
-    </>
+        </div>
+      )}
+    </section>
   );
 };
 

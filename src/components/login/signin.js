@@ -7,16 +7,19 @@ import { BiLockAlt } from "react-icons/bi";
 import logo from "../../assets/logojs.png";
 import { Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase_config";
+import { auth, db } from "../../firebase_config";
 import { useNavigate } from "react-router-dom";
 import { signInWithPopup } from "firebase/auth";
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 
 const Signin = ({ setisAuth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isShow, setIsShow] = useState(false);
   const [loading, setloading] = useState(false);
+  const [erroEmail, seterrorEmail] = useState("");
+  const [errorPassword, seterrorPassword] = useState("");
   const navigate = useNavigate();
 
   const handleShowPassword = (e) => {
@@ -35,9 +38,23 @@ const Signin = ({ setisAuth }) => {
     } catch (error) {
       console.log(error);
       if (error.code === "auth/wrong-password") {
-        console.log("wrong password");
+        seterrorPassword("Password is incorrect");
+      }
+      if (error.code === "auth/user-not-found") {
+        seterrorEmail("Email not found");
+      }
+      if (!email) {
+        seterrorEmail("Please input email");
+      }
+      if (!password) {
+        seterrorPassword("Password is empty");
       }
     }
+
+    setTimeout(() => {
+      seterrorEmail("");
+      seterrorPassword("");
+    }, 4000);
     setloading(false);
   };
 
@@ -49,6 +66,11 @@ const Signin = ({ setisAuth }) => {
         localStorage.setItem("isAuth", true);
         setisAuth(true);
       });
+      await setDoc(doc(db, "users", auth.currentUser.uid), {
+        name: auth.currentUser.displayName,
+        email: auth.currentUser.email,
+        userprofile: auth.currentUser.photoURL,
+      });
     } catch (error) {
       console.log(error);
       if (error.code === "auth/popup-closed-by-user") {
@@ -56,7 +78,7 @@ const Signin = ({ setisAuth }) => {
       }
     }
     setloading(false);
-    navigate("/profile");
+    navigate("/welcome");
   };
 
   const githublogin = async () => {
@@ -67,14 +89,18 @@ const Signin = ({ setisAuth }) => {
         localStorage.setItem("isAuth", true);
         setisAuth(true);
       });
-
-      navigate("/profile");
+      await setDoc(doc(db, "users", auth.currentUser.uid), {
+        name: auth.currentUser.displayName,
+        email: auth.currentUser.email,
+        userprofile: auth.currentUser.photoURL,
+      });
     } catch (error) {
       console.log(error);
       if (error.code === "auth/popup-closed-by-user") {
         console.log("ganteng");
       }
     }
+    navigate("/welcome");
     setloading(false);
   };
 
@@ -87,34 +113,40 @@ const Signin = ({ setisAuth }) => {
         <h1>Sign In</h1>
       </div>
       <form>
-        <div className="form-input">
-          <label htmlFor="email">Email</label>
-          <HiOutlineMail className="icon mass" size="25px" />
-          <img src={devide} alt="devider" className="icon-devider" />
-          <input
-            type="email"
-            placeholder="Email Address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        <div>
+          <div className="form-input">
+            <label htmlFor="email">Email</label>
+            <HiOutlineMail className="icon mass" size="25px" />
+            <img src={devide} alt="devider" className="icon-devider" />
+            <input
+              type="email"
+              placeholder="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <span className="error">{erroEmail}</span>
         </div>
-        <div className="form-input">
-          <label htmlFor="password">Password</label>
-          <BiLockAlt className="icon mass" size="25px" />
-          <img src={devide} alt="devider" className="icon-devider" />
-          <input
-            type={isShow ? "text" : "password"}
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button className="icon-eye" onClick={handleShowPassword}>
-            {isShow ? (
-              <AiOutlineEyeInvisible size={"26px"} />
-            ) : (
-              <AiOutlineEye size={"26px"} />
-            )}
-          </button>
+        <div>
+          <div className="form-input">
+            <label htmlFor="password">Password</label>
+            <BiLockAlt className="icon mass" size="25px" />
+            <img src={devide} alt="devider" className="icon-devider" />
+            <input
+              type={isShow ? "text" : "password"}
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button className="icon-eye" onClick={handleShowPassword}>
+              {isShow ? (
+                <AiOutlineEyeInvisible size={"26px"} />
+              ) : (
+                <AiOutlineEye size={"26px"} />
+              )}
+            </button>
+          </div>
+          <span className="error">{errorPassword}</span>
         </div>
       </form>
       <div className="cek">
@@ -123,12 +155,8 @@ const Signin = ({ setisAuth }) => {
       </div>
       <div className="main-login">
         {loading ? (
-          <button type="button" class="bg-indigo-500 ..." disabled>
-            <svg
-              class="animate-spin h-5 w-5 mr-3 ..."
-              viewBox="0 0 24 24"
-            ></svg>
-            Processing...
+          <button disabled={true} className="login">
+            Loading...
           </button>
         ) : (
           <button className="login" onClick={login}>

@@ -1,5 +1,5 @@
 import { addDoc, collection } from "firebase/firestore";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { auth, db } from "../../firebase_config";
 import "./style.scss";
 
@@ -15,10 +15,6 @@ const Postjobs = () => {
   const [salary, setsalary] = useState("");
   const [companyname, setcompanyname] = useState("");
 
-  useEffect(() => {
-    
-  }, []);
-
   const senddata = async () => {
     try {
       setloader(true);
@@ -30,7 +26,7 @@ const Postjobs = () => {
         jobtype: jobtype,
         author: auth.currentUser.displayName,
         img: auth.currentUser.photoURL,
-        created: new Date(),
+        created: new Date().toDateString(),
         jobsalary: salary,
         jobqualification: qualification,
         jobrequirement: jobrequirement,
@@ -48,16 +44,13 @@ const Postjobs = () => {
     setjobtype("");
     setjobrequirement("");
     setqualification("");
+    setsalary("");
   };
 
   return (
     <section id="postjob">
       <nav>
         <h3>Create a job</h3>
-        <button className="login" onClick={senddata}>
-          Post
-        </button>
-        {oader ? <div style={{ color: "white" }}>Loading</div> : null}
       </nav>
       <form>
         <div className="form-input">
@@ -67,6 +60,7 @@ const Postjobs = () => {
             placeholder="Name"
             value={namejob}
             onChange={(e) => setnamejob(e.target.value)}
+            required
           />
         </div>
         <div className="form-input">
@@ -76,6 +70,7 @@ const Postjobs = () => {
             placeholder="Company name"
             value={companyname}
             onChange={(e) => setcompanyname(e.target.value)}
+            required
           />
         </div>
         <div className="form-input">
@@ -85,6 +80,7 @@ const Postjobs = () => {
             placeholder="workplace type"
             value={workplacetype}
             onChange={(e) => setworlplacetype(e.target.value)}
+            required
           />
         </div>
         <div className="form-input">
@@ -94,6 +90,7 @@ const Postjobs = () => {
             placeholder="Salary"
             value={salary}
             onChange={(e) => setsalary(e.target.value)}
+            required
           />
         </div>
         <div className="form-input">
@@ -104,6 +101,7 @@ const Postjobs = () => {
             name="location"
             value={location}
             onChange={(e) => setlocation(e.target.value)}
+            required
           />
         </div>
         <div className="form-input">
@@ -113,6 +111,7 @@ const Postjobs = () => {
             placeholder="job type"
             value={jobtype}
             onChange={(e) => setjobtype(e.target.value)}
+            required
           />
         </div>
         <div className="form-input">
@@ -122,6 +121,7 @@ const Postjobs = () => {
             placeholder="Requirement"
             value={jobrequirement}
             onChange={(e) => setjobrequirement(e.target.value)}
+            required
           />
         </div>
         <div className="form-input">
@@ -131,6 +131,7 @@ const Postjobs = () => {
             placeholder="description"
             value={description}
             onChange={(e) => setdescription(e.target.value)}
+            required
           />
         </div>
         <div className="form-input">
@@ -140,8 +141,12 @@ const Postjobs = () => {
             placeholder="qualification"
             value={qualification}
             onChange={(e) => setqualification(e.target.value)}
+            required
           />
         </div>
+        <button className="login" onClick={senddata}>
+          {oader ? "Loading..." : "Post"}
+        </button>
       </form>
     </section>
   );
