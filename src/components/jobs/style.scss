@@ -42,18 +42,19 @@ section#postjob {
       flex-direction: column;
       gap: 12px;
     }
-    .login {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: $secondcolor;
-      padding: 12px;
-      border-radius: 14px;
-      font-weight: 500;
-      color: $textcolor;
-      font-size: 16px;
-      height: 40px;
-      width: 65px;
-    }
+  }
+  .login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $secondcolor;
+    padding: 12px;
+    border-radius: 14px;
+    font-weight: 500;
+    color: $textcolor;
+    font-size: 16px;
+    height: 40px;
+    width: 65px;
+    margin-top: 24px;
   }
 }

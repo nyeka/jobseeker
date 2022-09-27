@@ -13,7 +13,7 @@ import { signInWithPopup } from "firebase/auth";
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 
-const Signin = ({ setisAuth }) => {
+const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isShow, setIsShow] = useState(false);
@@ -30,11 +30,7 @@ const Signin = ({ setisAuth }) => {
   const login = async () => {
     try {
       setloading(true);
-      await signInWithEmailAndPassword(auth, email, password).then(() => {
-        localStorage.setItem("isAuth", true);
-        setisAuth(true);
-        navigate("/home");
-      });
+      await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
       console.log(error);
       if (error.code === "auth/wrong-password") {
@@ -55,6 +51,7 @@ const Signin = ({ setisAuth }) => {
       seterrorEmail("");
       seterrorPassword("");
     }, 4000);
+    navigate("/home");
     setloading(false);
   };
 
@@ -62,10 +59,7 @@ const Signin = ({ setisAuth }) => {
     const provider = new GoogleAuthProvider();
     try {
       setloading(true);
-      await signInWithPopup(auth, provider).then(() => {
-        localStorage.setItem("isAuth", true);
-        setisAuth(true);
-      });
+      await signInWithPopup(auth, provider);
       await setDoc(doc(db, "users", auth.currentUser.uid), {
         name: auth.currentUser.displayName,
         email: auth.currentUser.email,
@@ -85,10 +79,7 @@ const Signin = ({ setisAuth }) => {
     const provider = new GithubAuthProvider();
     try {
       setloading(true);
-      await signInWithPopup(auth, provider).then(() => {
-        localStorage.setItem("isAuth", true);
-        setisAuth(true);
-      });
+      await signInWithPopup(auth, provider);
       await setDoc(doc(db, "users", auth.currentUser.uid), {
         name: auth.currentUser.displayName,
         email: auth.currentUser.email,

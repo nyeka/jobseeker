@@ -5,6 +5,7 @@ import "./style.scss";
 import { AiOutlineSearch } from "react-icons/ai";
 import Nav from "../nav/nav";
 import { useNavigate } from "react-router-dom";
+import { IoPersonOutline } from "react-icons/io5";
 
 const Listjobs = () => {
   const [jobdata, setjobdata] = useState([]);
@@ -28,6 +29,13 @@ const Listjobs = () => {
 
   const removedata = async (id) => {
     navigate("/details", { state: { id: id } });
+  };
+
+  const image = (img) => {
+    if (img) {
+      return <img src={img} alt="ini gambar" />;
+    }
+    return <IoPersonOutline size="29px" />;
   };
 
   return (
@@ -67,7 +75,7 @@ const Listjobs = () => {
                     onClick={() => removedata(job.id)}
                     style={{ cursor: "pointer" }}
                   >
-                    <img src={job.img} alt="ini gambar" />
+                    {image(job.img)}
                     <div className="text-content">
                       <h3>
                         {job.namejob}

@@ -36,6 +36,7 @@ const Postjobs = () => {
     } catch (error) {
       console.log(error);
     }
+
     setloader(false);
     setnamejob("");
     setlocation("");
@@ -144,10 +145,10 @@ const Postjobs = () => {
             required
           />
         </div>
-        <button className="login" onClick={senddata}>
-          {oader ? "Loading..." : "Post"}
-        </button>
       </form>
+      <button className="login" onClick={senddata}>
+        {oader ? "Loading..." : "Post"}
+      </button>
     </section>
   );
 };

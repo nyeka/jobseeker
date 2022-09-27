@@ -7,7 +7,7 @@ section#listjob {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding-bottom: 40px;
+  padding-bottom: 120px;
 
   nav {
     display: flex;
@@ -65,7 +65,7 @@ section#listjob {
     }
 
     img {
-      border-radius: 9px;
+      border-radius: 12px;
       object-fit: contain;
     }
 
