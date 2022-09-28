@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { auth, db } from "../../firebase_config";
 import { IoPersonOutline } from "react-icons/io5";
 import { RiMenu2Line } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   const [data, setdata] = useState([]);
@@ -32,7 +33,7 @@ const Nav = () => {
   return (
     <Container>
       <RiMenu2Line size="29px" />
-      {getprofile()}
+      <Link to="/profile">{getprofile()}</Link>
     </Container>
   );
 };

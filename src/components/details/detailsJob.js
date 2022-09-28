@@ -41,7 +41,7 @@ const DetailsJob = () => {
     </div>
   ) : (
     <>
-      <Desknav to={-1} />
+      <Desknav to={-1} navtext="Description" />
       <section id="details">
         <div className="content-text">
           <h2>

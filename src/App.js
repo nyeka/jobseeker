@@ -8,6 +8,8 @@ import Welcome from "./components/welcome/Welcome";
 import ChangePages from "./pages/changepages";
 import DetailsJob from "./components/details/detailsJob";
 import Listjobs from "./components/listjobs/Listjobs";
+import Profile from "./components/profiles/Profile";
+import Editprofile from "./components/profiles/editprofile";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -28,7 +30,9 @@ const App = () => {
           <Route path="/home" element={<ChangePages />} />
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/listjob" element={<Listjobs />} />
-          <Route path="/details" element={<DetailsJob />} />
+          <Route path="/details" element={<DetailsJob />} />\
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/update" element={<Editprofile />} />
         </Routes>
       </Router>
     </Container>
