@@ -146,7 +146,13 @@ const Postjobs = () => {
           />
         </div>
       </form>
-      <button className="login" onClick={senddata}>
+      <button
+        className="login"
+        onClick={senddata}
+        disabled={
+          !namejob | !description | !location | !salary | !jobrequirement
+        }
+      >
         {oader ? "Loading..." : "Post"}
       </button>
     </section>

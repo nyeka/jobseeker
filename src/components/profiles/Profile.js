@@ -18,7 +18,6 @@ const Profile = () => {
       } catch (error) {
         console.log(error);
       }
-      console.log(auth.currentUser.uid);
     };
 
     const getdatajob = async () => {
