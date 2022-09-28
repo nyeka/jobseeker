@@ -27,7 +27,7 @@ const Profile = () => {
   return (
     <>
       {" "}
-      <Desknav to={-1} textnav="Profile" img="test" />
+      <Desknav to={-1} textnav="Profile" img="test" name={data.name} />
       <Container className="container" img={data.cover}>
         <div className="card">
           <div className="img-container">

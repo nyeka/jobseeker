@@ -3,8 +3,14 @@ import "./desk.scss";
 import { BsArrowLeft } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { AiOutlineSetting } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
-const Desknav = ({ to, navtext, textnav, img }) => {
+const Desknav = ({ to, navtext, textnav, img, name }) => {
+  const navigate = useNavigate();
+  const handler = () => {
+    navigate("/update", { state: { name: name } });
+  };
+
   return (
     <nav id="nav">
       <Link to={to} className="link">
@@ -12,11 +18,7 @@ const Desknav = ({ to, navtext, textnav, img }) => {
         {navtext && <h3>{navtext}</h3>}
         {textnav && <h1>{textnav}</h1>}
       </Link>
-      {img && (
-        <Link to="/update">
-          <AiOutlineSetting size="20px" />
-        </Link>
-      )}
+      {img && <AiOutlineSetting size="20px" onClick={handler} />}
     </nav>
   );
 };
