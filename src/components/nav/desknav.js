@@ -18,7 +18,13 @@ const Desknav = ({ to, navtext, textnav, img, name }) => {
         {navtext && <h3>{navtext}</h3>}
         {textnav && <h1>{textnav}</h1>}
       </Link>
-      {img && <AiOutlineSetting size="20px" onClick={handler} />}
+      {img && (
+        <AiOutlineSetting
+          size="20px"
+          onClick={handler}
+          style={{ cursor: "pointer" }}
+        />
+      )}
     </nav>
   );
 };

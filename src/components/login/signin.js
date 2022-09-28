@@ -31,8 +31,8 @@ const Signin = () => {
     try {
       setloading(true);
       await signInWithEmailAndPassword(auth, email, password);
+      navigate("/home");
     } catch (error) {
-      console.log(error);
       if (error.code === "auth/wrong-password") {
         seterrorPassword("Password is incorrect");
       }
@@ -51,7 +51,6 @@ const Signin = () => {
       seterrorEmail("");
       seterrorPassword("");
     }, 4000);
-    navigate("/home");
     setloading(false);
   };
 
@@ -65,6 +64,7 @@ const Signin = () => {
         email: auth.currentUser.email,
         userprofile: auth.currentUser.photoURL,
       });
+      navigate("/welcome");
     } catch (error) {
       console.log(error);
       if (error.code === "auth/popup-closed-by-user") {
@@ -72,7 +72,6 @@ const Signin = () => {
       }
     }
     setloading(false);
-    navigate("/welcome");
   };
 
   const githublogin = async () => {
@@ -85,13 +84,13 @@ const Signin = () => {
         email: auth.currentUser.email,
         userprofile: auth.currentUser.photoURL,
       });
+      navigate("/welcome");
     } catch (error) {
       console.log(error);
       if (error.code === "auth/popup-closed-by-user") {
         console.log("ganteng");
       }
     }
-    navigate("/welcome");
     setloading(false);
   };
 

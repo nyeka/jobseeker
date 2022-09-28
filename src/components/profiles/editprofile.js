@@ -28,6 +28,8 @@ const Editprofile = () => {
     }
     setloading(false);
   };
+
+  
   return (
     <>
       <Desknav to={-1} navtext="Edit Profile" />
@@ -68,6 +70,10 @@ const Editprofile = () => {
               value={address}
               onChange={(e) => setaddress(e.target.value)}
             />
+          </div>
+          <div className="form-input">
+            <label>About</label>
+            <textarea type="text" placeholder="About" />
           </div>
         </form>
         <button className="login" onClick={updatedata}>

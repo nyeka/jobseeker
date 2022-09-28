@@ -4,10 +4,10 @@ import "./style.scss";
 import { auth, db } from "../../firebase_config";
 import { doc, getDoc } from "firebase/firestore";
 import styled from "styled-components";
-import { AiFillEdit } from "react-icons/ai";
 
 const Profile = () => {
   const [data, setdata] = useState([]);
+  const [jobdata, setjobdata] = useState([]);
 
   useEffect(() => {
     const getdata = async () => {
@@ -18,11 +18,28 @@ const Profile = () => {
       } catch (error) {
         console.log(error);
       }
-
-      console.log(data.name);
     };
+
+    const getdatajob = async () => {
+      try {
+        const id = auth.currentUser.uid;
+        const docSnap = await getDoc(doc(db, "jobs", id));
+        setjobdata(docSnap.data());
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getdatajob();
     getdata();
   }, [data.name]);
+
+  const getimg = () => {
+    if (data.userprofile) {
+      return <img src={data.userprofile} alt="ini logo" />;
+    }
+
+    return <img src="https://i.imgur.com/6VBx3io.png" alt="ini logo" />;
+  };
 
   return (
     <>
@@ -30,10 +47,7 @@ const Profile = () => {
       <Desknav to={-1} textnav="Profile" img="test" name={data.name} />
       <Container className="container" img={data.cover}>
         <div className="card">
-          <div className="img-container">
-            <img src={data.userprofile} alt="ini logo" />
-            <AiFillEdit size="20px" className="icon" />
-          </div>
+          <div className="img-container">{getimg()}</div>
         </div>
       </Container>
       <section id="profile">
@@ -55,6 +69,18 @@ const Profile = () => {
           <div>
             <h3>About</h3>
             <p>{data.about ? data.about : "no descritpion"}</p>
+          </div>
+          <div>
+            <h3>Jobs Posted</h3>
+            {jobdata
+              ? jobdata.map((item, id) => {
+                  return (
+                    <div key={id}>
+                      <p>{item.namejob}</p>
+                    </div>
+                  );
+                })
+              : "No job posted"}
           </div>
         </div>
       </section>
