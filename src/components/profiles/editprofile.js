@@ -8,10 +8,11 @@ import "./editstyle.scss";
 const Editprofile = () => {
   const location = useLocation();
   const [name, setname] = useState(location.state.name);
-  const [description, setdescription] = useState("");
-  const [address, setaddress] = useState("");
+  const [description, setdescription] = useState(location.state.desc);
+  const [address, setaddress] = useState(location.state.address);
   const [workplace, setworkplace] = useState("");
   const [loading, setloading] = useState(false);
+  const [about, setabout] = useState(location.state.about);
 
   const updatedata = async () => {
     try {
@@ -22,6 +23,7 @@ const Editprofile = () => {
         description: description,
         address: address,
         workplace: workplace,
+        about: about,
       });
     } catch (error) {
       console.log(error);
@@ -29,7 +31,6 @@ const Editprofile = () => {
     setloading(false);
   };
 
-  
   return (
     <>
       <Desknav to={-1} navtext="Edit Profile" />
@@ -73,7 +74,12 @@ const Editprofile = () => {
           </div>
           <div className="form-input">
             <label>About</label>
-            <textarea type="text" placeholder="About" />
+            <textarea
+              type="text"
+              placeholder="About"
+              value={about}
+              onChange={(e) => setabout(e.target.value)}
+            />
           </div>
         </form>
         <button className="login" onClick={updatedata}>

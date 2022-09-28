@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Desknav from "../nav/desknav";
 import "./style.scss";
 import { auth, db } from "../../firebase_config";
-import { doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import styled from "styled-components";
 
 const Profile = () => {
@@ -18,33 +18,42 @@ const Profile = () => {
       } catch (error) {
         console.log(error);
       }
+      console.log(auth.currentUser.uid);
     };
 
     const getdatajob = async () => {
       try {
-        const id = auth.currentUser.uid;
-        const docSnap = await getDoc(doc(db, "jobs", id));
-        setjobdata(docSnap.data());
+        const snap = await getDocs(collection(db, "jobs"));
+        setjobdata(snap.docs.map((doc) => ({ ...doc.data() })));
       } catch (error) {
         console.log(error);
       }
     };
+
+    console.log(jobdata);
     getdatajob();
     getdata();
-  }, [data.name]);
+  }, [jobdata]);
 
   const getimg = () => {
     if (data.userprofile) {
       return <img src={data.userprofile} alt="ini logo" />;
     }
-
     return <img src="https://i.imgur.com/6VBx3io.png" alt="ini logo" />;
   };
 
   return (
     <>
       {" "}
-      <Desknav to={-1} textnav="Profile" img="test" name={data.name} />
+      <Desknav
+        to={-1}
+        textnav="Profile"
+        img="test"
+        name={data.name}
+        desc={data.description}
+        about={data.about}
+        address={data.address}
+      />
       <Container className="container" img={data.cover}>
         <div className="card">
           <div className="img-container">{getimg()}</div>
@@ -70,17 +79,28 @@ const Profile = () => {
             <h3>About</h3>
             <p>{data.about ? data.about : "no descritpion"}</p>
           </div>
-          <div>
+          <div className="kontent">
             <h3>Jobs Posted</h3>
             {jobdata
-              ? jobdata.map((item, id) => {
-                  return (
-                    <div key={id}>
-                      <p>{item.namejob}</p>
+              .filter((item) => item.id === auth.currentUser.uid)
+              .map((item, id) => {
+                return (
+                  <div
+                    key={id}
+                    className="container"
+                    style={{ cursor: "pointer" }}
+                  >
+                    <div className="text-content">
+                      <h3>
+                        {item.namejob}
+                        {","} {`(${item.workplacetype})`} {"-"} {item.jobsalary}
+                      </h3>
+                      <span>{item.jobtype}</span>
+                      <p>{item.location}</p>
                     </div>
-                  );
-                })
-              : "No job posted"}
+                  </div>
+                );
+              })}
           </div>
         </div>
       </section>

@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 import { AiOutlineSetting } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
-const Desknav = ({ to, navtext, textnav, img, name }) => {
+const Desknav = ({ to, navtext, textnav, img, name, desc, about, address }) => {
   const navigate = useNavigate();
   const handler = () => {
-    navigate("/update", { state: { name: name } });
+    navigate("/update", {
+      state: { name: name, desc: desc, about: about, address: address },
+    });
   };
 
   return (

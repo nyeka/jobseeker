@@ -2,8 +2,8 @@ import React from "react";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import { AiOutlineHome } from "react-icons/ai";
 import { MdOutlineWork } from "react-icons/md";
-import { GrAdd } from "react-icons/gr";
 import { RiArticleLine } from "react-icons/ri";
+import { BiAddToQueue } from "react-icons/bi";
 
 const Bottomnav = ({ val, setval }) => {
   return (
@@ -31,7 +31,10 @@ const Bottomnav = ({ val, setval }) => {
         label="Jobs"
         icon={<MdOutlineWork size="25px" />}
       />
-      <BottomNavigationAction label="post" icon={<GrAdd size="25px" />} />
+      <BottomNavigationAction
+        label="post"
+        icon={<BiAddToQueue size="25px" />}
+      />
       <BottomNavigationAction
         label="Article"
         icon={<RiArticleLine size="25px" />}

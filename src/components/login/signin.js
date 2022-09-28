@@ -63,6 +63,7 @@ const Signin = () => {
         name: auth.currentUser.displayName,
         email: auth.currentUser.email,
         userprofile: auth.currentUser.photoURL,
+        id: auth.currentUser.uid,
       });
       navigate("/welcome");
     } catch (error) {
@@ -83,6 +84,7 @@ const Signin = () => {
         name: auth.currentUser.displayName,
         email: auth.currentUser.email,
         userprofile: auth.currentUser.photoURL,
+        id: auth.currentUser.uid,
       });
       navigate("/welcome");
     } catch (error) {
