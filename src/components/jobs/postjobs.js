@@ -83,7 +83,7 @@ const Postjobs = () => {
             value={workplacetype}
             onChange={(e) => setworlplacetype(e.target.value)}
           >
-            <option value="" disabled selected hidden>
+            <option defaultValue="g" disabled selected hidden>
               Workplace type
             </option>
             <option defaultValue="onsite">On-site</option>
@@ -121,7 +121,7 @@ const Postjobs = () => {
             value={jobtype}
             onChange={(e) => setjobtype(e.target.value)}
           >
-            <option value="" disabled selected hidden>
+            <option defaultValue="f" disabled selected hidden>
               Job type
             </option>
             <option defaultValue="onsite">Full-time</option>
