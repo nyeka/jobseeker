@@ -72,10 +72,6 @@ const App = () => {
           content="JobSeeker is a open source platform to find a match job for you"
         />
         <meta name="twitter:image:alt" content="JobSeeker" />
-        <meta
-          name="description"
-          content="JobSeeker is a open source platform to find a match job for you"
-        />
         <meta content="index,follow" name="robots" />
         <meta content name="copyright" />
         <meta content="Indonesian" name="language" />
