@@ -13,7 +13,7 @@ import { signInWithPopup } from "firebase/auth";
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 
-const Signin = () => {
+const Signin = ({ setIsAuth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isShow, setIsShow] = useState(false);
@@ -86,6 +86,7 @@ const Signin = () => {
         userprofile: auth.currentUser.photoURL,
         id: auth.currentUser.uid,
       });
+
       navigate("/welcome");
     } catch (error) {
       console.log(error);

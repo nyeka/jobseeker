@@ -32,7 +32,7 @@ const Profile = () => {
     console.log(jobdata);
     getdatajob();
     getdata();
-  }, [jobdata]);
+  }, [jobdata.namejob]);
 
   const getimg = () => {
     if (data.userprofile) {
@@ -40,6 +40,9 @@ const Profile = () => {
     }
     return <img src="https://i.imgur.com/6VBx3io.png" alt="ini logo" />;
   };
+
+  const filterdata = jobdata.filter((item) => item.id === auth.currentUser.uid);
+  console.log(filterdata);
 
   return (
     <>
@@ -80,9 +83,8 @@ const Profile = () => {
           </div>
           <div className="kontent">
             <h3>Jobs Posted</h3>
-            {jobdata
-              .filter((item) => item.id === auth.currentUser.uid)
-              .map((item, id) => {
+            {filterdata ? (
+              filterdata.map((item, id) => {
                 return (
                   <div
                     key={id}
@@ -99,7 +101,10 @@ const Profile = () => {
                     </div>
                   </div>
                 );
-              })}
+              })
+            ) : (
+              <p>no job posted</p>
+            )}
           </div>
         </div>
       </section>

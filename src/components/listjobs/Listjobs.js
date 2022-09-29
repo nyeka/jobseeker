@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { db } from "../../firebase_config";
 import "./style.scss";
 import { AiOutlineSearch } from "react-icons/ai";
-import Nav from "../nav/nav";
 import { useNavigate } from "react-router-dom";
 import { IoPersonOutline } from "react-icons/io5";
 
@@ -44,7 +43,6 @@ const Listjobs = () => {
         <div className="loading">Loading</div>
       ) : (
         <div className="main-container">
-          <Nav />
           <div className="container-form">
             <div className="form-input">
               <AiOutlineSearch className="icon" size="21px" />

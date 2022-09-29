@@ -4,11 +4,25 @@ nav {
   display: flex;
   justify-content: space-between;
   color: $textcolor;
-  height: 65px;
 
   img {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
+    border-bottom: 4px solid wheat;
+  }
+
+  .icons {
+    align-self: flex-end;
+  }
+
+  .menu-name {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    h3 {
+      font-size: 20px;
+      font-weight: 500;
+    }
   }
 }

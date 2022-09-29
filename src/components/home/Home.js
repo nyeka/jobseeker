@@ -5,7 +5,6 @@ import { GiSandsOfTime } from "react-icons/gi";
 import { auth, db } from "../../firebase_config";
 import { getDoc, doc } from "firebase/firestore";
 import Loading from "../pulse/loading";
-import Nav from "../nav/nav";
 
 const Home = () => {
   const [name, setname] = useState("");
@@ -35,7 +34,6 @@ const Home = () => {
         <Loading />
       ) : (
         <section id="home">
-          <Nav />
           <div className="text-header">
             <p>
               Hi {data.name}, <br /> Find your dream job

@@ -10,6 +10,8 @@ import DetailsJob from "./components/details/detailsJob";
 import Listjobs from "./components/listjobs/Listjobs";
 import Profile from "./components/profiles/Profile";
 import Editprofile from "./components/profiles/editprofile";
+import "swiper";
+import Navbar from "./components/sidebav/navbar";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -18,7 +20,7 @@ const App = () => {
     setTimeout(() => {
       setLoading(false);
     }, 1500);
-  }, []);
+  });
 
   return (
     <Container className="min-h-screen max-w-md mx-auto relative ">
@@ -30,9 +32,10 @@ const App = () => {
           <Route path="/home" element={<ChangePages />} />
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/listjob" element={<Listjobs />} />
-          <Route path="/details" element={<DetailsJob />} />\
+          <Route path="/details" element={<DetailsJob />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/update" element={<Editprofile />} />
+          <Route path="/navbar" element={<Navbar />} />
         </Routes>
       </Router>
     </Container>

@@ -15,7 +15,6 @@ const Bottomnav = ({ val, setval }) => {
         left: 0,
         width: "100%",
         display: "flex",
-        gap: "10px",
         zIndex: 1,
       }}
       value={val}
@@ -23,22 +22,10 @@ const Bottomnav = ({ val, setval }) => {
         setval(newValue);
       }}
     >
-      <BottomNavigationAction
-        label="Home"
-        icon={<AiOutlineHome size="25px" />}
-      />
-      <BottomNavigationAction
-        label="Jobs"
-        icon={<MdOutlineWork size="25px" />}
-      />
-      <BottomNavigationAction
-        label="post"
-        icon={<BiAddToQueue size="25px" />}
-      />
-      <BottomNavigationAction
-        label="Article"
-        icon={<RiArticleLine size="25px" />}
-      />
+      <BottomNavigationAction icon={<AiOutlineHome size="25px" />} />
+      <BottomNavigationAction icon={<MdOutlineWork size="25px" />} />
+      <BottomNavigationAction icon={<BiAddToQueue size="25px" />} />
+      <BottomNavigationAction icon={<RiArticleLine size="25px" />} />
     </BottomNavigation>
   );
 };
