@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
 
 const Welcome = () => {
   const navigate = useNavigate();
+  const [val, setval] = useState();
   const handlerbutton = () => {
     navigate("/home");
   };
+
+  console.log(val);
   return (
     <>
       <nav className="nav">

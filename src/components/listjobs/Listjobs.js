@@ -40,7 +40,7 @@ const Listjobs = () => {
   return (
     <section id="listjob">
       {loadme ? (
-        <div className="loading">Loading</div>
+        <div className="loading">Loading...</div>
       ) : (
         <div className="main-container">
           <div className="container-form">

@@ -9,19 +9,6 @@ section#listjob {
   gap: 12px;
   padding-bottom: 120px;
 
-  nav {
-    display: flex;
-    justify-content: space-between;
-    color: $textcolor;
-    height: 65px;
-
-    img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-    }
-  }
-
   .button-content {
     display: flex;
     justify-content: space-between;
@@ -52,6 +39,7 @@ section#listjob {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 19px;
   }
 
   .container {

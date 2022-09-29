@@ -42,6 +42,10 @@ section#postjob {
       flex-direction: column;
       gap: 12px;
     }
+
+    select {
+      background-color: $secondcolor;
+    }
   }
   .login {
     display: flex;

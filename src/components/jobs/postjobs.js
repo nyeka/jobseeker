@@ -76,13 +76,20 @@ const Postjobs = () => {
         </div>
         <div className="form-input">
           <label htmlFor="Type">Workplace type</label>
-          <input
-            type="text"
-            placeholder="workplace type"
+          <select
+            name="gender"
+            className="bg-slate-100 p-4 text-sm w-full rounded-tl-md appearance-none"
+            id="cars"
             value={workplacetype}
             onChange={(e) => setworlplacetype(e.target.value)}
-            required
-          />
+          >
+            <option value="" disabled selected hidden>
+              Workplace type
+            </option>
+            <option defaultValue="onsite">On-site</option>
+            <option defaultValue="hybrid">Hybrid (On-site and remote)</option>
+            <option defaultValue="remote">Remote</option>
+          </select>
         </div>
         <div className="form-input">
           <label htmlFor="Type">Salary</label>
@@ -107,13 +114,21 @@ const Postjobs = () => {
         </div>
         <div className="form-input">
           <label htmlFor="email">Job type</label>
-          <input
-            type="text"
-            placeholder="job type"
+          <select
+            name="gender"
+            className="bg-slate-100 p-4 text-sm w-full rounded-tl-md appearance-none"
+            id="cars"
             value={jobtype}
             onChange={(e) => setjobtype(e.target.value)}
-            required
-          />
+          >
+            <option value="" disabled selected hidden>
+              Job type
+            </option>
+            <option defaultValue="onsite">Full-time</option>
+            <option defaultValue="hybrid">Part-time</option>
+            <option defaultValue="remote">Contract</option>
+            <option defaultValue="remote">Internship</option>
+          </select>
         </div>
         <div className="form-input">
           <label htmlFor="email">Job requirement</label>
@@ -132,16 +147,6 @@ const Postjobs = () => {
             placeholder="description"
             value={description}
             onChange={(e) => setdescription(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-input">
-          <label htmlFor="email">Job qualifications</label>
-          <textarea
-            type="text"
-            placeholder="qualification"
-            value={qualification}
-            onChange={(e) => setqualification(e.target.value)}
             required
           />
         </div>
