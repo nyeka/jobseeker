@@ -64,6 +64,9 @@ const Signup = () => {
       if (password !== confirmPassword) {
         seterrorPassword("Password not match");
       }
+      if (password.length < 6) {
+        seterrorPassword("Password must be at least 6 characters");
+      }
     }
 
     setTimeout(() => {

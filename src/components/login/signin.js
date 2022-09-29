@@ -33,6 +33,7 @@ const Signin = ({ setIsAuth }) => {
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/home");
     } catch (error) {
+      console.log(error);
       if (error.code === "auth/wrong-password") {
         seterrorPassword("Password is incorrect");
       }
@@ -44,6 +45,9 @@ const Signin = ({ setIsAuth }) => {
       }
       if (!password) {
         seterrorPassword("Password is empty");
+      }
+      if (error.code === "auth/invalid-email") {
+        seterrorEmail("Email is invalid");
       }
     }
 
