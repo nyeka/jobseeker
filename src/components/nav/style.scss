@@ -6,14 +6,20 @@ nav {
   color: $textcolor;
 
   img {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    border-bottom: 4px solid wheat;
   }
 
   .icons {
     align-self: flex-end;
+
+    img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border-bottom: 4px solid wheat;
+    }
   }
 
   .menu-name {
