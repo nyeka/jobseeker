@@ -11,7 +11,6 @@ const Postjobs = () => {
   const [jobtype, setjobtype] = useState("");
   const [oader, setloader] = useState(false);
   const [jobrequirement, setjobrequirement] = useState("");
-  const [qualification, setqualification] = useState("");
   const [salary, setsalary] = useState("");
   const [companyname, setcompanyname] = useState("");
 
@@ -28,7 +27,6 @@ const Postjobs = () => {
         img: auth.currentUser.photoURL,
         created: new Date().toDateString(),
         jobsalary: salary,
-        jobqualification: qualification,
         jobrequirement: jobrequirement,
         id: auth.currentUser.uid,
         companyname: companyname,
@@ -44,7 +42,6 @@ const Postjobs = () => {
     setdescription("");
     setjobtype("");
     setjobrequirement("");
-    setqualification("");
     setsalary("");
   };
 

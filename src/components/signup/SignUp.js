@@ -184,7 +184,7 @@ const Signup = () => {
           onClick={regis}
           disabled={password !== confirmPassword ? true : false}
         >
-          <p>{loading ? "Loading..." : "Sign in"}</p>
+          <p>{loading ? "Loading..." : "Sign up"}</p>
         </button>
         <p className="align">
           <span>Already a member?</span>{" "}
