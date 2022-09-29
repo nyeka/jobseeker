@@ -29,10 +29,9 @@ const Profile = () => {
       }
     };
 
-    console.log(jobdata);
     getdatajob();
     getdata();
-  }, [jobdata.namejob]);
+  }, [jobdata]);
 
   const getimg = () => {
     if (data.userprofile) {

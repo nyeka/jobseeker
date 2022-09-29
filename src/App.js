@@ -11,7 +11,6 @@ import Listjobs from "./components/listjobs/Listjobs";
 import Profile from "./components/profiles/Profile";
 import Editprofile from "./components/profiles/editprofile";
 import "swiper";
-import Navbar from "./components/sidebav/navbar";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -35,7 +34,6 @@ const App = () => {
           <Route path="/details" element={<DetailsJob />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/update" element={<Editprofile />} />
-          <Route path="/navbar" element={<Navbar />} />
         </Routes>
       </Router>
     </Container>
